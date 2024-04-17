@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nomeE = prompt("Digite seu nome: ");
+        var alturaE = parseInt(prompt("Digite sua altura em cm: "));
+        var pesoE = parseInt(prompt("Digite seu peso em KG: "));
+
+        imc();
+
+        function imc(){
+            var imV = pesoE / (alturaE * alturaE) * 10000;
+            alert(`Olá ${nomeE}, seu imc atual é de: ${imV.toFixed(1)}`);
+
+            if(imV < 18.5) {
+                alert("Você está abaixo do peso")
+            }
+            else if (imV < 24.9) {
+                console.log("passei por aqui");
+                alert("Você está com o peso adequado")
+            }
+            else if (imV < 29.9) {
+                alert("Você está com sobrepeso")
+            }
+            else if (imV < 34.9) {
+                alert("Você possuí obesidade grau I")
+            }
+            else if (imV < 39.9) {
+                alert("Você possuí obesidade grau II")
+            }
+            else if (imV >= 40) {
+                alert("Você possuí obesidade grau III")
+            }
+        }
+    </script>
+</body>
+</html>
