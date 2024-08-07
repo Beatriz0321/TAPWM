@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script>
+         function Num(a, b, c, d) {
+            var maior = a;
+
+            if (b > maior) {
+                maior = b;
+            }
+            if (c > maior) {
+                maior = c;
+            }
+            if (d > maior) {
+                maior = d;
+            }
+
+            return maior;
+        }
+
+        function NumMath(a, b, c, d) {
+            return Math.max(a, b, c, d);
+        }
+
+        function Crescente(a, b, c) {
+            var numeros = [a, b, c];
+
+            numeros.sort(function(x, y) {
+                return x - y;
+            });
+
+            return numeros;
+        }
+
+        function ExibeMaior() {
+            var num1 = parseFloat(prompt("Digite o primeiro número:"));
+            var num2 = parseFloat(prompt("Digite o segundo número:"));
+            var num3 = parseFloat(prompt("Digite o terceiro número:"));
+            var num4 = parseFloat(prompt("Digite o quarto número:"));
+
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3) || isNaN(num4)) {
+                alert("Por favor, insira números válidos.");
+                return;
+            }
+
+            var maior1 = Num(num1, num2, num3, num4);
+            var maior2 = NumMath(num1, num2, num3, num4);
+
+            console.log("O maior número (com ifs) é:", maior1);
+            console.log("O maior número (com Math.max) é:", maior2);
+            alert("O maior número (com ifs) é: " + maior1 + "\n" + "O maior número (com Math.max) é: " + maior2);
+        }
+
+        function ExibeCrescente() {
+            var num1 = parseFloat(prompt("Digite o primeiro número:"));
+            var num2 = parseFloat(prompt("Digite o segundo número:"));
+            var num3 = parseFloat(prompt("Digite o terceiro número:"));
+
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                alert("Por favor, insira números válidos.");
+                return;
+            }
+
+            var NumOrd = Crescente(num1, num2, num3);
+
+            console.log("Os números em ordem crescente são:", NumOrd);
+            alert("Os números em ordem crescente são: " + NumOrd.join(", "));
+        }
+    </script>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <button onclick="ExibeMaior()">Encontrar o Maior Número</button>
+    <button onclick="ExibeCrescente()">Ordem crescente</button>
+</body>
+</html>
