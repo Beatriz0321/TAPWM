@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function Calc(num1, num2, num3) {
+            const soma = num1 + num2 + num3;
+
+            const quadrado1 = num1 * num1;
+            const quadrado2 = num2 * num2;
+
+            alert(`A soma dos três números é: ${soma}, o quadrado do primeiro é: ${quadrado1} e o quadrado do segundo é: ${quadrado2}`);
+        }
+
+        function Main() {
+            const numeros = [
+                parseFloat(prompt("Digite o primeiro número:")),
+                parseFloat(prompt("Digite o segundo número:")),
+                parseFloat(prompt("Digite o terceiro número:"))
+            ];
+
+            if (numeros.some(isNaN)) {
+                alert("Erro: Todos os campos devem ser preenchidos com números válidos.");
+                return;
+            }
+
+            Calc.apply(null, numeros);
+        }
+
+        document.addEventListener("DOMContentLoaded", Main);
+    </script>
+</head>
+<body>
+</body>
+</html>
