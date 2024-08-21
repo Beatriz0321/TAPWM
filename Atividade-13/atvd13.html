@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script>
+
+        function Modo1() {
+            var Aluno1 = new Object();
+            Aluno1.RA = '09797687';
+            Aluno1.Nome = "André Souza";
+            alert(`RA: ${Aluno1.RA}`);
+            alert(`Nome: ${Aluno1.Nome}`);
+        }
+
+        function Modo1Recebe() {
+            var Aluno1 = new Object();
+            Aluno1.RA = prompt('Digite o RA do aluno:');
+            Aluno1.Nome = prompt('Digite o nome do aluno:');
+            alert(`RA: ${Aluno1.RA}`);
+            alert(`Nome: ${Aluno1.Nome}`);
+        }
+
+        function Modo2(){
+            const Aluno1 = {};
+            Object.assign(Aluno1, {
+                RA: '123456',
+                Nome: 'Maria Oliveira'
+            });
+            alert(`RA: ${Aluno1.RA}`);
+            alert(`Nome: ${Aluno1.Nome}`);
+        }
+
+        function Modo2Recebe(){
+            const Aluno1 = {};
+            const RA_valor = prompt('Digite o RA do aluno:');
+            const Nome_valor = prompt('Digite o nome do aluno:');
+            Object.assign(Aluno1, {
+                RA: RA_valor,
+                Nome: Nome_valor
+            });
+            alert(`RA: ${Aluno1.RA}`);
+            alert(`Nome: ${Aluno1.Nome}`);
+        }
+
+        function Modo3() {
+            var Aluno1 = {};
+            var RA = 'ra';
+            Aluno1[RA] = '82319764329'; 
+            var Nome = 'nome'; 
+            Aluno1[Nome] = 'Roberta Valença'; 
+            alert(`RA: ${Aluno1[RA]}`);
+            alert(`Nome: ${Aluno1[Nome]}`);
+        }
+
+        function Modo3Recebe() {
+            var Aluno1 = {};
+            var RA_valor = prompt('Digite o RA do aluno:');
+            var Nome_valor = prompt('Digite o nome do aluno:');
+            Aluno1.RA = RA_valor;
+            Aluno1.Nome = Nome_valor;
+            alert(`RA: ${Aluno1.RA}`);
+            alert(`Nome: ${Aluno1.Nome}`);
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="Modo1()">Construtor - Pré definido</button>
+    <button onclick="Modo1Recebe()">Construtor - Recebe do usuário</button>
+    <button onclick="Modo2()">Object Assign - Pré definido</button>
+    <button onclick="Modo2Recebe()">Object Assign - Recebe do usuário</button>
+    <button onclick="Modo3()">Dot Notation - Pré definido</button>
+    <button onclick="Modo3Recebe()">Dot Notation - Recebe do usuário</button>
+</body>
+</html>
