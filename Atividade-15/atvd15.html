@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    
+    <script>
+        class Calculadora {
+            static calcularArea(base, altura) {
+                const area = base * altura;
+                alert(`A Área do Retângulo é: ${area}`);
+            }
+        }
+
+        class Main {
+            static executar() {
+                const base = parseFloat(prompt("Digite a Base do Retângulo:"));
+                const altura = parseFloat(prompt("Digite a Altura do Retângulo:"));
+
+                if (isNaN(base) || isNaN(altura)) {
+                    alert("Erro: Valores inválidos.");
+                    return;
+                }
+
+                Calculadora.calcularArea(base, altura);
+            }
+        }
+
+        class Conta {
+            constructor(nomeCorrentista, banco, numeroConta, saldo) {
+                this.nomeCorrentista = nomeCorrentista;
+                this.banco = banco;
+                this.numeroConta = numeroConta;
+                this.saldo = saldo;
+            }
+
+            exibirDados() {
+                return `Nome: ${this.nomeCorrentista}\nBanco: ${this.banco}\nNúmero da Conta: ${this.numeroConta}\nSaldo: R$ ${this.saldo.toFixed(2)}`;
+            }
+        }
+
+        class Corrente extends Conta {
+            constructor(nomeCorrentista, banco, numeroConta, saldo, saldoEspecial) {
+                super(nomeCorrentista, banco, numeroConta, saldo);
+                this.saldoEspecial = saldoEspecial;
+            }
+
+            exibirDados() {
+                return `${super.exibirDados()}\nSaldo Especial: R$ ${this.saldoEspecial.toFixed(2)}`;
+            }
+        }
+
+        class Poupanca extends Conta {
+            constructor(nomeCorrentista, banco, numeroConta, saldo, taxaJuros, dataVencimento) {
+                super(nomeCorrentista, banco, numeroConta, saldo);
+                this.taxaJuros = taxaJuros;
+                this.dataVencimento = dataVencimento;
+            }
+
+            exibirDados() {
+                return `${super.exibirDados()}\nTaxa de Juros: ${this.taxaJuros.toFixed(2)}%\nData de Vencimento: ${this.dataVencimento}`;
+            }
+        }
+
+        class Main2 {
+            static executar() {
+                const nomeCorrentistaCorrente = prompt("Digite o nome do correntista da Conta Corrente:");
+                const bancoCorrente = prompt("Digite o banco da Conta Corrente:");
+                const numeroContaCorrente = prompt("Digite o número da conta da Conta Corrente:");
+                const saldoCorrente = parseFloat(prompt("Digite o saldo da Conta Corrente:"));
+                const saldoEspecial = parseFloat(prompt("Digite o saldo especial da Conta Corrente:"));
+
+                if (isNaN(saldoCorrente) || isNaN(saldoEspecial)) {
+                    alert("Erro: Valores inválidos para Conta Corrente.");
+                    return;
+                }
+
+                const contaCorrente = new Corrente(nomeCorrentistaCorrente, bancoCorrente, numeroContaCorrente, saldoCorrente, saldoEspecial);
+
+                const nomeCorrentistaPoupanca = prompt("Digite o nome do correntista da Conta Poupança:");
+                const bancoPoupanca = prompt("Digite o banco da Conta Poupança:");
+                const numeroContaPoupanca = prompt("Digite o número da conta da Conta Poupança:");
+                const saldoPoupanca = parseFloat(prompt("Digite o saldo da Conta Poupança:"));
+                const taxaJuros = parseFloat(prompt("Digite a taxa de juros da Conta Poupança (em %):"));
+                const dataVencimento = prompt("Digite a data de vencimento da Conta Poupança (YYYY-MM-DD):");
+
+                if (isNaN(saldoPoupanca) || isNaN(taxaJuros)) {
+                    alert("Erro: Valores inválidos para Conta Poupança.");
+                    return;
+                }
+
+                const contaPoupanca = new Poupanca(nomeCorrentistaPoupanca, bancoPoupanca, numeroContaPoupanca, saldoPoupanca, taxaJuros, dataVencimento);
+
+                alert('Dados da Conta Corrente:\n' + contaCorrente.exibirDados());
+                alert('Dados da Conta Poupança:\n' + contaPoupanca.exibirDados());
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="Main.executar()">Área do Retângulo</button>
+    <button onclick="Main2.executar()">Conta</button>
+</body>
+</html>
