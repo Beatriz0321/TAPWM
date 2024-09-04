@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function Transforma() {
+            const textInput = document.getElementById("textInput");
+            const uppercase = document.getElementById("uppercase").checked;
+            const lowercase = document.getElementById("lowercase").checked;
+
+            if (uppercase) {
+                textInput.value = textInput.value.toUpperCase();
+            } else if (lowercase) {
+                textInput.value = textInput.value.toLowerCase();
+            }
+        }
+
+        function toggleCheckbox(checkbox) {
+            if (checkbox === 'uppercase') {
+                document.getElementById("lowercase").checked = false;
+            } else if (checkbox === 'lowercase') {
+                document.getElementById("uppercase").checked = false;
+            }
+            Transforma();
+        }
+    </script>
+</head>
+<body>
+
+    <label for="textInput">Insira aqui:</label>
+    <input type="text" id="textInput" oninput="transformText()"><br><br>
+
+    <input type="checkbox" id="uppercase" onclick="toggleCheckbox('uppercase')"> 
+    <label for="uppercase">Transformar em maiúsculas</label><br>
+
+    <input type="checkbox" id="lowercase" onclick="toggleCheckbox('lowercase')"> 
+    <label for="lowercase">Transformar em minúsculas</label><br>
+
+</body>
+</html>

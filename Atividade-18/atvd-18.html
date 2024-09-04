@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <script>
+
+        function validar() {
+            var nome = document.nomeform.elements['nome'].value;
+            if (nome.length < 10) {
+                alert("O nome deve ter no mínimo 10 caracteres.");
+                return false;
+            }
+
+            var email = document.nomeform.elements['email'].value;
+            if (email.indexOf('@') == -1 || email.indexOf('.') == -1) {
+                alert("O email deve conter os caracteres '@' e '.'.");
+                return false;
+            }
+
+            var comentario = document.nomeform.elements['comentario'].value;
+            if (comentario.length < 20) {
+                alert("O comentário deve ter no mínimo 20 caracteres.");
+                return false;
+            }
+
+            var radios = document.nomeform.elements['visitou'];
+            var pesquisaSelecionada = false;
+            var mensagem = "";
+
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    pesquisaSelecionada = true;
+                    if (radios[i].value === "sim") {
+                        mensagem = "Que bom que você voltou a visitar esta página!";
+                    } else {
+                        mensagem = "Volte sempre a esta página!";
+                    }
+                    break;
+                }
+            }
+
+            if (!pesquisaSelecionada) {
+                alert("Por favor, selecione se você já visitou esta página antes.");
+                return false;
+            }
+
+            alert(mensagem);
+            return true;
+        }
+        
+    </script>
+</head>
+<body>
+
+    <h1>Formulário de Principal</h1>
+
+    <form name="nomeform" onsubmit="return validar()">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="comentario">Comentário:</label>
+        <textarea id="comentario" name="comentario"></textarea><br><br>
+
+        <h3>Pesquisa:</h3>
+        <label>Primeira vez nessa página?</label><br>
+        <input type="radio" name="visitou" value="sim"> Sim<br>
+        <input type="radio" name="visitou" value="nao"> Não<br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+</body>
+</html>
